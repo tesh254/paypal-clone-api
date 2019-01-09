@@ -19,7 +19,7 @@ let userSchema = Schema({
         default: Date.now
     },
     phoneNumber:{
-        type:Number,
+        type:String,
         required:true
     }
 });

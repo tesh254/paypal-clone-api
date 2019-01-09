@@ -6,6 +6,7 @@ const Promise = require('bluebird');
 const chalk = require('chalk');
 
 const Config  = require('./config/config');
+const authApi = require('./api/user');
 
 // Set up the express app
 const app = express();
@@ -29,6 +30,8 @@ mongoose.connection.on('open', (err) => {
 // Parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/api/v1/auth', authApi);
 
 // Setup a default catch-route that sends back a welcome message in json format
 app.get('/', (req, res, next) => {
