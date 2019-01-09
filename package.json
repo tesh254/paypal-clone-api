@@ -5,17 +5,17 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js",
-    "dev":"nodemon --exec node app.js"
+    "start": "node app.js",
+    "dev": "nodemon --exec node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "morgan": "^1.9.1",
-    "pg": "^7.7.1",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^4.42.0"
-  }
+    "morgan": "^1.9.1"
+  },
+  "keywords": [
+    "heroku"
+  ]
 }
