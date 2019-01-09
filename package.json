@@ -23,7 +23,7 @@
     "heroku"
   ],
   "engines" : { 
-    "node" : ">=0.12" 
+    "node" : "v10.14.2" 
   }, 
   "devDependencies": {
     "chalk": "^2.4.2"
