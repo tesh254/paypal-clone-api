@@ -1,6 +1,15 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const Promise = require('bluebird');
+const chalk = require('chalk');
+const cors = require('cors');
+
+const Config  = require('./config/config');
+const authApi = require('./api/user');
+let jwt = require('./helpers/jwt');
+let errorHandler = require('./helpers/error-handler');
 
 // Set up the express app
 const app = express();
@@ -11,12 +20,29 @@ app.use(logger('dev'));
 // Register the port to the server
 app.set('port', process.env.PORT || 8858);
 
+// Set the promise
+mongoose.Promise = Promise;
+// Setup mongoose database
+mongoose.connect(Config.mongo.url, {useNewUrlParser: true});
+// Console successfull
+mongoose.connection.on('open', (err) => {
+    if (err) console.log(chalk.red("Database not connected"))
+    console.log(chalk.green("Database connected"))
+});
+
 // Parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use('/api/v1/auth', authApi);
+app.use(cors());
+// Protect routes
+app.use(jwt())
+// Handle any errors
+app.use(errorHandler); 
+
 // Setup a default catch-route that sends back a welcome message in json format
-app.get('*', (req, res, next) => {
+app.get('/', (req, res, next) => {
     res.status(200).send({
         message: "Welcome to the beggining of nothingness"
     })
