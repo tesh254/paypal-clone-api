@@ -17,14 +17,15 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.2",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "chalk": "^2.4.2"
   },
   "keywords": [
     "heroku"
   ],
-  "engines" : { 
-    "node" : "v10.14.2" 
-  }, 
+  "engines": {
+    "node": "v10.14.2"
+  },
   "devDependencies": {
     "chalk": "^2.4.2"
   }

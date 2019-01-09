@@ -16,10 +16,10 @@ app.use(logger('dev'));
 // Register the port to the server
 app.set('port', process.env.PORT || 8858);
 
-// Setup mongoose database
-mongoose.connect(Config.mongo.url);
 // Set the promise
 mongoose.Promise = Promise;
+// Setup mongoose database
+mongoose.connect(Config.mongo.url, {useNewUrlParser: true});
 // Console successfull
 mongoose.connection.on('open', (err) => {
     if (err) console.log(chalk.red("Database not connected"))
