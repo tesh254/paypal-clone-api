@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Setup a default catch-route that sends back a welcome message in json format
-app.get('*', (req, res, next) => {
+app.get('/', (req, res, next) => {
     res.status(200).send({
         message: "Welcome to the beggining of nothingness"
     })
